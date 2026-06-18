@@ -13,6 +13,7 @@ A simple User Registration web application built with Python Flask and MongoDB, 
 
 ## Project Structure
 
+```
 flask-mongo-devops/
 ├── app/
 │   ├── app.py
@@ -35,6 +36,7 @@ flask-mongo-devops/
 ├── docker-compose.yml
 ├── .env.example
 └── README.md
+```
 
 ## Prerequisites
 
