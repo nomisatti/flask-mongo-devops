@@ -1,0 +1,30 @@
+name: Complete CI/CD Pipeline - Deploy App to Aws Server
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+        -   name: checkout code
+            uses: actions/checkout@v4
+
+        -   name: connect to AWS via ssh
+            uses: appleboy/ssh-actions@v1.0.3
+            with:
+                host: ${{secrets.EC2_Host}}
+                username: ${{secrets.EC2_Username}}
+                key: ${{secrets.EC2_Key}}
+
+                script: |
+                    cd /home/ububtu
+                    git clone https://github.com/nomisatti/flask-mongo-devops.git
+                    cd flask-mongo-devops
+                    sudo docker compose down
+                    sudo docker compose up --build
+                    sudo docker logs flask-app-cont
+
