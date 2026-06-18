@@ -22,10 +22,13 @@ jobs:
 
                 script: |
                     cd /home/ubuntu
-                    git clone https://github.com/nomisatti/flask-mongo-devops.git
-                    cd flask-mongo-devops
-                    cp ./app/.env.example ./app/.env
+                    if [ -d "/flask-mongo-devops" ]; then
+                        cd /flask-mongo-devops && git pull
+                    else
+                        git clone https://github.com/nomisatti/flask-mongo-devops.git
+                        cd flask-mongo-devops
+                    fi
+                    echo "${{secrets.ENV_FILE}}" > .env
                     sudo docker compose down
-                    sudo docker compose up --build
-                    sudo docker logs flask-app-cont
+                    sudo docker compose up --build -d
 
