@@ -21,7 +21,7 @@ jobs:
                 key: ${{secrets.EC2_Key}}
 
                 script: |
-                    cd /home/ububtu
+                    cd /home/ubuntu
                     git clone https://github.com/nomisatti/flask-mongo-devops.git
                     cd flask-mongo-devops
                     sudo docker compose down
