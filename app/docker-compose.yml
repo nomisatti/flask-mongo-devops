@@ -1,0 +1,32 @@
+services:
+  mongodb:
+    image: mongo
+    container_name: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - flask-network
+    restart: unless-stopped
+
+  
+  flask-app:
+    build: .
+    container_name: flask-app-cont
+    ports:
+      - 5000:5000
+    restart: unless-stopped
+    env_file:
+      - .env
+    depends_on:
+      - mongodb
+    networks:
+      - flask-network
+
+networks:
+  flask-network:
+
+volumes:
+  mongo-data:
+

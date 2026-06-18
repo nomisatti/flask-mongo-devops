@@ -1,0 +1,20 @@
+# Environment variables
+.env
+
+# Ansible
+ansible/inventory.ini
+
+# Terraform
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# SSH Keys
+*.pem
+*.pub
