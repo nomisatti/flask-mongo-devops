@@ -12,9 +12,10 @@ services:
 
   
   flask-app:
-    build:
-      context: ./app/
-      dockerfile: Dockerfile
+    image: nomisatti/flask-mongo-devops:latest
+    #build:
+      #context: ./app/
+      #dockerfile: Dockerfile
     container_name: flask-app-cont
     ports:
       - 5000:5000
