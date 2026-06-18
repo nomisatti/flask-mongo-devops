@@ -18,3 +18,4 @@ __pycache__/
 # SSH Keys
 *.pem
 *.pub
+*-app-key
