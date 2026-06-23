@@ -20,6 +20,10 @@ resource "aws_vpc_security_group_ingress_rule" "inbound_rules_" {
         "ssh"= 22
         "http" = 80
         "app" = 5000
+        "prometheus" = 9090
+        "grafana"    = 3000
+        "cadvisor"   = 8080
+        "node_exporter" = 9100
     }
 
     description = "Inbound Rule for port ${each.value} - (${each.key})"
