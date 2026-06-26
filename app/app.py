@@ -1,10 +1,14 @@
 from flask import Flask, jsonify, request, render_template, redirect, url_for, flash
 from pymongo import MongoClient
 from bson import ObjectId
+from prometheus_flask_exporter import PrometheusMetrics
 import os
 
 app = Flask(__name__)
 app.secret_key = "devops-flask-key"
+
+metrics = PrometheusMetrics(app)
+metrics.info("app_info", "Flask MongoDB DevOps App", version="1.0.0")
 
 client = MongoClient(os.environ.get("MONGO_URI", "mongodb://mongo:27017/"))
 db = client["flask_db"]
